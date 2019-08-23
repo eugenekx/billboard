@@ -1,0 +1,36 @@
+.a_date {
+    margin: 0 2px 0 -6px;
+    font-size: 55px;
+    font-weight: 400;
+    line-height: 48px;
+    float: left;
+    width: 65px;
+    display: block;
+
+}
+
+.a_day {
+    height: 15px;
+    margin-top: 12px;
+    letter-spacing: .85px;
+    font-size: 15px;
+    line-height: 13px;
+    color: #777;
+    min-height: 12px;
+    
+    display: block;
+}
+
+.a_month {
+    margin-top: 1px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 21px;
+    display: block;
+
+}
+
+.gray_small {
+    color:gray;
+    font-size:14px;
+}

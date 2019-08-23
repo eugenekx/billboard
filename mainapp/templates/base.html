@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Афиша</title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link href="{% static 'css/bootstrap-datepicker.css' %}" rel="stylesheet">
+
+
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'locales/bootstrap-datepicker.ru.min.js' %}"></script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/afisha.css' %}" rel="stylesheet">
+  </head>
+  <body>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom">
+  <h5 class="my-0 mr-md-auto font-weight-normal"> </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/afisha/">Афиша</a>
+    <a class="p-2 text-dark" href="/places/">Места</a>
+    <a class="p-2 text-dark" href="/artists/">Артисты</a>
+    <a class="p-2 text-dark" href="/orgs/">Организаторы</a>
+  </nav>
+</div>
+
+{% block content %}{% endblock %}
+
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+
+</body></html>
+
+

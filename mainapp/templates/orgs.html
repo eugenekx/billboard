@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<main role="main">
+
+  <div class="bg-white">
+
+    <div class="container-flex mx-5">
+      <div class="row mx-5">
+        <h1 class="font-weight-bold display-4 mt-3 ml-2" style="padding-bottom: 40px;">Афиша</h1>
+      </div>
+    
+      <div class="row mx-5">
+      <div class="col-2">
+      <form action="" method="get">
+        {{ form.name }}
+         
+
+        <div class="form-group mt-4">
+              <label for="formGroupExampleInput">Теги</label>
+              {{ form.tags }}
+            </div>
+            
+            <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-4" style="border-radius: 32px; "">Поиск</button>
+
+      </form>
+      </div>
+
+      <div class="col">
+      <div class="row">
+      {%if empty_flag %}
+          <h3 class="ml-5" style="font-weight:normal">По Вашему запросу ничего не найдено.</h1>
+          {% endif %}
+        {% for org in orgs %}
+        
+          <div class="col-md-4">
+            <a href="/orgs/{{ org.pk }}/" class="divLink">
+            <div class="card mb-4 border-white">
+                <img class="card-img-top rounded" src= "/media/{{ org.image }}" width=340 height=220 style="object-fit: cover;"><title> {{ org.name }} </title>
+              <div class="card-body" style="padding-left: 5px">
+                <h3 class="card-title font-weight-bold"> {{ org.name }} </h3>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted"> {{org.address}} </small>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+        
+        {% endfor %}
+      </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

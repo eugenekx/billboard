@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<link href="{% static 'css/a_date.css' %}" rel="stylesheet">
+<div class="container-fluid cov" style=
+"background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+url(/media/{{ place.image }});">
+	<div class="container covertext">
+		<p class="text-white h4"></p>
+		<h1 class="display-1 font-weight-bold text-white">{{place.name}}</h1>
+		<h2 class="text-white font-weight-bold">{{place.address}}</h2>
+		<a href="{{place.link}}" class="btn btn-outline-warning btn-lg font-weight-bold" style="border-radius: 32px; margin-top:20px;">Перейти на сайт</a>
+	</div>
+</div>
+
+<div class = "container">
+<div class = "row">
+<div class="container eventtext">
+	<div class="col">
+		<h1 class="font-weight-bold display-4" style="padding-bottom: 20px">О месте</h1>
+		<p> {{place.description}} </p>
+		<h1 class="font-weight-bold display-4" style="padding-bottom: 20px">Афиша</h1>
+				
+				{%for event in events %}
+					<div class="container">
+						<div class="row border-bottom mt-3">
+							<div class="col-3">
+								<div class="gray_small"> {% for tag in event.tags.all %} {{tag.name}} {% endfor %} </div>
+								 <a href="/afisha/{{ event.pk }}/" class="divLink"><h4> {{event.name}}</h4> </a> 
+							</div>
+							<div class="col-3">
+							<div class="a_date my-0">{{event.get_day}}</div>
+							<div class="a_day">{{ event.get_week_day }}</div>
+							<div class="a_month">{{event.get_month }}</div>
+							</div>
+							<div class="col-3">
+							<a href="/places/{{ event.place.pk }}/" class="divLink"><h3 class="mb-0"> {{event.place}}</h3> </a> 
+							<p class="gray_small">{{event.place.address}}</p>
+							</div>
+							<div class="col-3">
+							<a href="/afisha/{{ event.pk }}/" class="btn btn-lg btn-block btn-outline-warning">от {{event.price}}₽</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+	</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
