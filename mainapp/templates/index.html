@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link href="{% static 'css/indst.css' %}" rel="stylesheet">
+
+{% block content %}
+
+<main role="main">
+
+  <div class="bg-white">
+
+    <div class="container-flex mx-5">
+      <div class="row mx-5">
+        <h1 class="font-weight-bold display-4 mt-3 ml-2" style="padding-bottom: 40px;">Афиша</h1>
+      </div>
+    
+      <div class="row mx-5">
+      <div class="col-2">
+      <form action="" method="get">
+        {{ form.name }}
+
+        <div class="mb-3" id="choosedate">
+              {{ form.date }}
+              <script>
+                $('#choosedate input').datepicker({
+                language: "ru",
+                autoclose: true,
+                todayHighlight: true,
+                format: "yyyy-mm-dd",
+                });
+              </script>
+            </div>
+        
+
+        <div class="form-group mt-1">
+                <label for="formGroupExampleInput">Цена</label>
+                        <div class="row">
+                <div class="col">
+                  {{ form.price_from }}
+                </div>
+                <div class="col">
+                  {{ form.price_to }}
+                </div>
+              </div>
+            </div>
+        
+        
+        
+
+        <div class="form-group mt-4">
+              <label for="formGroupExampleInput">Теги</label>
+              {{ form.tags }}
+            </div>
+            
+            <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-4" style="border-radius: 32px; "">Поиск</button>
+
+    
+<!--      
+            <input class="form-control mb-3" type="text" placeholder="Название">
+
+            
+
+            <div class="form-group mt-1">
+                <label for="formGroupExampleInput">Цена</label>
+                        <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="от">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="до">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="custom-control custom-checkbox mb-1">
+              <input class="custom-control-input" type="checkbox" value="" id="conCheck">
+              <label class="custom-control-label" for="conCheck">
+                Концерты
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-1">
+              <input class="custom-control-input" type="checkbox" value="" id="fesCheck">
+              <label class="custom-control-label" for="fesCheck">
+                Фестивали
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-1">
+              <input class="custom-control-input" type="checkbox" value="" id="lekCheck">
+              <label class="custom-control-label" for="lekCheck">
+                Лекции
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-1">
+              <input class="custom-control-input" type="checkbox" value="" id="expoCheck">
+              <label class="custom-control-label" for="expoCheck">
+                Выставки
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-1">
+              <input class="custom-control-input" type="checkbox" value="" id="forCheck">
+              <label class="custom-control-label" for="forCheck">
+                Форумы
+              </label>
+            </div>
+
+            <div class="form-group mt-4">
+              <label for="formGroupExampleInput">Теги</label>
+              <input type="text" class="form-control" placeholder="напр: инди, поп">
+            </div>
+            
+            <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-4" style="border-radius: 32px; "">Поиск</button>!-->  
+
+      </form>
+      </div>
+
+      <div class="col">
+      <div class="row">
+          {%if empty_flag %}
+          <h3 class="ml-5" style="font-weight:normal">По Вашему запросу ничего не найдено.</h1>
+          {% endif %}
+          {% for event in events %}
+          
+            <div class="col-md-4">
+              <a href="/afisha/{{ event.pk }}/" class="divLink">
+              <div class="card mb-4 border-white">
+                <div class="card-img-overlay text-right">
+                  <h3><span class="badge badge-pill badge-dark">{{event.price}}₽</span></h3>
+                </div>
+                  <img class="card-img-top rounded" src= "/media/{{ event.image }}" width=340 height=220 style="object-fit: cover;"><title> {{ event.name }} </title>
+                <div class="card-body" style="padding-left: 5px">
+                  <h3 class="card-title font-weight-bold mb-2"> {{ event.name }} </h3>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">{{event.datetime}} @ {{event.place}} # {% for tag in event.tags.all %}{{tag.name}} {% endfor %} </small>
+                  </div>
+                </div>
+              </div>
+              </a>
+            </div>
+            
+          {% endfor %}
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+</main>
+
+
+{% endblock %}

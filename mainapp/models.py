@@ -76,8 +76,8 @@ class Event(models.Model):
 	
 	def get_day(self):
 		t = str(self.datetime.day)
-		if t == '1':
-			t = '01'
+		if len(t) == 1:
+			t = '0'+t
 		return t
 
 	def get_month(self):

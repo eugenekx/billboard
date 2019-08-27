@@ -145,7 +145,7 @@ class PlaceDetailView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		context['events'] = self.get_object().event_set.all()
+		context['events'] = self.get_object().event_set.all().order_by('datetime')
 		return context
 
 
@@ -155,7 +155,7 @@ class OrgDetailView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		context['events'] = self.get_object().event_set.all()
+		context['events'] = self.get_object().event_set.all().order_by('datetime')
 		return context
 
 class ArtistDetailView(DetailView):
@@ -164,6 +164,6 @@ class ArtistDetailView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		context['events'] = self.get_object().event_set.all()
+		context['events'] = self.get_object().event_set.all().order_by('datetime')
 		context['tags'] = self.get_object().tags.all()
 		return context
